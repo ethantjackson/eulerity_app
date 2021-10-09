@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import PetCard from './Components/PetCard';
 import axios from 'axios';
-import Moment from 'moment';
+import 'materialize-css/dist/css/materialize.min.css';
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
@@ -13,14 +14,15 @@ const Pets = () => {
   if (pets.length === 0) return <div>loading...</div>;
 
   return (
-    <div>
+    <div className='container'>
       {pets.map((pet, index) => (
         <div key={index}>
-          <h2> {pet.title}</h2>
-          <img src={pet.url} alt='pet-img' height='500' />
-          <p>{pet.description}</p>
-          <i>{Moment(pet.created).format('MMM Do, YYYY')}</i>
-          <hr />
+          <PetCard
+            title={pet.title}
+            img={pet.url}
+            date={pet.created}
+            description={pet.description}
+          />
         </div>
       ))}
     </div>
