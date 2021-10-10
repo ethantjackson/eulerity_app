@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const ActionBtn = ({ selectAll, clearAll, shuffle }) => {
+const ActionBtn = () => {
+  const petResults = useSelector((state) => state.petResults);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     var fabs = document.querySelectorAll('.fixed-action-btn');
     M.FloatingActionButton.init(fabs, { direction: 'top' });
@@ -10,6 +14,31 @@ const ActionBtn = ({ selectAll, clearAll, shuffle }) => {
     var tooltips = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(tooltips, {});
   }, []);
+
+  const selectAll = () => {
+    dispatch({ type: 'SET_SELECTED_PETS', payload: [...petResults] });
+  };
+
+  const clearAll = () => {
+    dispatch({ type: 'SET_SELECTED_PETS', payload: [] });
+  };
+
+  const shuffle = () => {
+    let shuffledPets = petResults;
+    let currIdx = shuffledPets.length,
+      randIdx;
+    while (currIdx !== 0) {
+      randIdx = Math.floor(Math.random() * currIdx);
+      currIdx--;
+
+      [shuffledPets[currIdx], shuffledPets[randIdx]] = [
+        shuffledPets[randIdx],
+        shuffledPets[currIdx],
+      ];
+    }
+
+    dispatch({ type: 'SET_PET_RESULTS', payload: [...shuffledPets] });
+  };
 
   return (
     <div

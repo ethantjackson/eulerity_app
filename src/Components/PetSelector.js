@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   SelectionItem,
   SelectorContainer,
@@ -9,11 +10,36 @@ import { saveAs } from 'file-saver';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const PetSelector = ({ selections, deselect, toggleSearch }) => {
+const PetSelector = () => {
+  const petOptions = useSelector((state) => state.petOptions);
+  const searching = useSelector((state) => state.searching);
+  const selections = useSelector((state) => state.selectedPets);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     var tooltips = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(tooltips, {});
   }, []);
+
+  const deselect = (pet) => {
+    dispatch({
+      type: 'SET_SELECTED_PETS',
+      payload: [
+        ...selections.filter((selection) => selection.title !== pet.title),
+      ],
+    });
+  };
+
+  const toggleSearch = () => {
+    dispatch({
+      type: 'SET_SHOW_SEARCH',
+      payload: !searching,
+    });
+    dispatch({
+      type: 'SET_PET_RESULTS',
+      payload: [...petOptions],
+    });
+  };
 
   const download = () => {
     if (selections.length !== 0) {

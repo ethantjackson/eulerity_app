@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Card,
   CardInner,
@@ -9,7 +10,20 @@ import {
 } from './Card.style';
 import Moment from 'moment';
 
-const PetCard = ({ pet, select }) => {
+const PetCard = ({ pet }) => {
+  const selections = useSelector((state) => state.selectedPets);
+  const dispatch = useDispatch();
+
+  const select = (pet) => {
+    if (
+      !selections.find((selection) => {
+        return selection.title === pet.title;
+      })
+    ) {
+      dispatch({ type: 'SET_SELECTED_PETS', payload: [...selections, pet] });
+    }
+  };
+
   return (
     <Card onClick={() => select(pet)}>
       <img
