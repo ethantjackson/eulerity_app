@@ -60,18 +60,18 @@ export const SelectionActionBtns = styled.div`
 const extend = keyframes`
   from {
     transform: scaleY(0);
-    margin-bottom: -1rem;
+    /* margin-bottom: -1rem; */
   }
 
   to {
     transform: scaleY(1);
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
   }
 `;
 export const SearchBarInput = styled.input`
+  outline: none;
   position: -webkit-sticky;
   position: sticky;
-  /* margin-bottom: -3rem; */
   text-align: right;
   top: 0;
   left: 24%;
@@ -79,12 +79,14 @@ export const SearchBarInput = styled.input`
   width: 75%;
   height: 3rem;
   border-radius: 1rem;
-  border: 2px solid black;
-  box-shadow: 1px 1px 1px rgba(73, 73, 73, 0.6);
+  border: 1px solid transparent;
+  /* box-shadow: 1px 1px 1px rgba(73, 73, 73, 0.6); */
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(73, 73, 73, 0.6);
   color: #eee;
   font-size: 1.6rem;
+  letter-spacing: 3px;
+  margin-bottom: -3rem;
 
   animation: ${extend} 0.2s ease-in-out;
 `;
