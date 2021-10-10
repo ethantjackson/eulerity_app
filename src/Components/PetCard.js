@@ -9,25 +9,29 @@ import {
 } from './Card.style';
 import Moment from 'moment';
 
-const PetCard = ({ img, title, date, description }) => {
+const PetCard = ({ pet, select }) => {
   return (
-    <Card>
-      <img src={img} alt='placeholder' style={{ height: '100%', opacity: 0 }} />
+    <Card onClick={() => select(pet)}>
+      <img
+        src={pet.url}
+        alt='placeholder'
+        style={{ height: '100%', opacity: 0 }}
+      />
       <CardInner>
         <CardFront>
-          <CardImg brightness={1} src={img} alt='pet-img' />
+          <CardImg brightness={1} src={pet.url} alt='pet-img' />
         </CardFront>
         <CardBack>
           <CardImg
             brightness={0.4}
-            src={img}
+            src={pet.url}
             alt='pet-img'
             style={{ transform: 'scaleX(-1)' }}
           />
           <BackText>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <i>Posted: {Moment(date).format('MMM Do, YYYY')}</i>
+            <h5>{pet.title}</h5>
+            <p>{pet.description}</p>
+            <i>{Moment(pet.created).format('MMM Do, YYYY')}</i>
           </BackText>
         </CardBack>
       </CardInner>

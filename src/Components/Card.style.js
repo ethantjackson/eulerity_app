@@ -1,15 +1,26 @@
 import styled, { css } from 'styled-components';
 
+export const CardContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  height: calc(90vh - 4.6rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
 export const Card = styled.div`
-  height: 500px;
+  height: calc(10rem + 10vh);
   display: inline-block;
-  perspective: 1000px;
+  perspective: 2000px;
   text-align: center;
+  margin-bottom: 2rem;
+  cursor: pointer;
 `;
 
 export const CardImg = styled.img`
+  max-width: 90vw;
   height: 100%;
-  transition: all 1s;
   border-radius: 1rem;
   filter: brightness(${(props) => props.brightness});
 `;
@@ -19,11 +30,12 @@ export const CardInner = styled.div`
   top: -100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1s;
   transform-style: preserve-3d;
 
   ${Card}:hover & {
     transform: rotateY(180deg);
+    z-index: 10;
   }
 `;
 
@@ -36,9 +48,6 @@ const frontBackStyles = css`
 `;
 export const CardFront = styled.div`
   ${frontBackStyles}
-  ${CardImg}:hover & {
-    border: 10px solid purple;
-  }
 `;
 export const CardBack = styled.div`
   ${frontBackStyles}
@@ -46,16 +55,17 @@ export const CardBack = styled.div`
 `;
 
 export const BackText = styled.div`
-  padding: 2rem;
+  padding: 2%;
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
   color: white;
   i {
+    width: 100%;
     left: 50%;
     transform: translate(-50%, 0);
     position: absolute;
-    bottom: 2rem;
+    bottom: 2%;
   }
 `;
