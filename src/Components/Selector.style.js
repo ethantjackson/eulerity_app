@@ -79,8 +79,7 @@ export const SearchBarInput = styled.input`
   width: 75%;
   height: 3rem;
   border-radius: 1rem;
-  border: 1px solid transparent;
-  /* box-shadow: 1px 1px 1px rgba(73, 73, 73, 0.6); */
+  border: transparent;
   z-index: 1;
   background-color: rgba(73, 73, 73, 0.6);
   color: #eee;

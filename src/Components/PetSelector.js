@@ -5,6 +5,7 @@ import {
   SelectionItemsContainer,
   SelectionActionBtns,
 } from './Selector.style';
+import { saveAs } from 'file-saver';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
@@ -16,7 +17,9 @@ const PetSelector = ({ selections, deselect, toggleSearch }) => {
 
   const download = () => {
     if (selections.length !== 0) {
-      console.log('downloading...');
+      selections.forEach((selection) => {
+        saveAs(selection.url, selection.title + '.jpg');
+      });
     } else {
       M.toast({ html: 'Please select photos to download' });
     }
