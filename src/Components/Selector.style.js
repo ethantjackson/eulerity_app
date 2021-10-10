@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const SelectorContainer = styled.div`
-  height: calc(4.6rem);
-  max-height: 12vh;
+  display: flex;
+  justify-content: space-around;
+  height: 4.6rem;
   overflow-y: auto;
+  overflow-x: hidden;
   text-align: left;
-  padding: 0 7%;
+  padding: 0 0 0 5%;
   color: grey;
   p {
     display: inline-block;
@@ -17,6 +19,11 @@ export const SelectorContainer = styled.div`
     top: 1px;
     left: -1px;
   }
+`;
+
+export const SelectionItemsContainer = styled.div`
+  flex-grow: 2;
+  width: calc(100% - 15vh);
 `;
 
 export const SelectionItem = styled.li`
@@ -32,4 +39,52 @@ export const SelectionItem = styled.li`
   &:hover {
     transform: scale(1.2);
   }
+`;
+
+export const SelectionActionBtns = styled.div`
+  width: 11vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  a {
+    height: calc(1rem + 3vh) !important;
+    width: calc(1rem + 3vh) !important;
+  }
+  i {
+    color: white;
+    line-height: calc(0.9rem + 3vh) !important;
+    font-size: calc(1.2rem + 1vh);
+  }
+`;
+
+const extend = keyframes`
+  from {
+    transform: scaleY(0);
+    margin-bottom: -1rem;
+  }
+
+  to {
+    transform: scaleY(1);
+    margin-bottom: 0;
+  }
+`;
+export const SearchBarInput = styled.input`
+  position: -webkit-sticky;
+  position: sticky;
+  /* margin-bottom: -3rem; */
+  text-align: right;
+  top: 0;
+  left: 24%;
+  padding: 1rem;
+  width: 75%;
+  height: 3rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  box-shadow: 1px 1px 1px rgba(73, 73, 73, 0.6);
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #eee;
+  font-size: 1.6rem;
+
+  animation: ${extend} 0.2s ease-in-out;
 `;

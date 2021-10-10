@@ -8,7 +8,7 @@ const ActionBtn = ({ selectAll, clearAll }) => {
     M.FloatingActionButton.init(fabs, { direction: 'top' });
 
     var tooltips = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(tooltips, { position: 'left' });
+    M.Tooltip.init(tooltips, {});
   }, []);
 
   return (
@@ -25,6 +25,7 @@ const ActionBtn = ({ selectAll, clearAll }) => {
             href='#!'
             className='btn-floating red tooltipped'
             data-tooltip='Clear All'
+            data-position='left'
           >
             <i className='material-icons' onClick={clearAll}>
               clear
@@ -36,6 +37,7 @@ const ActionBtn = ({ selectAll, clearAll }) => {
             href='#!'
             className='btn-floating blue darken-1 tooltipped'
             data-tooltip='Select All'
+            data-position='left'
           >
             <i className='material-icons' onClick={selectAll}>
               done_all

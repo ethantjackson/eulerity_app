@@ -3,15 +3,19 @@ import PetCard from './Components/PetCard';
 import Preloader from './Components/Preloader';
 import PetSelector from './Components/PetSelector';
 import ActionBtn from './Components/ActionBtn';
+import SearchBar from './Components/SearchBar';
 import { CardContainer } from './Components/Card.style';
 import axios from 'axios';
 import 'materialize-css/dist/css/materialize.min.css';
 
 const Pets = () => {
+  const [petOptions, setPetOptions] = useState([]);
   const [pets, setPets] = useState([]);
   const [selections, setSelections] = useState([]);
+  const [showSearch, setShowSearch] = useState(false);
   useEffect(() => {
     axios.get('http://eulerity-hackathon.appspot.com/pets').then((res) => {
+      setPetOptions(res.data);
       setPets(res.data);
     });
   }, []);
@@ -40,12 +44,31 @@ const Pets = () => {
     );
   };
 
-  if (pets.length === 0) return <Preloader />;
+  const search = (keyword) => {
+    const lowerCaseKeyword = keyword.toLowerCase();
+    setPets(
+      petOptions.filter(
+        (pet) =>
+          pet.title.toLowerCase().includes(lowerCaseKeyword) ||
+          pet.description.toLowerCase().includes(lowerCaseKeyword)
+      )
+    );
+  };
+
+  if (petOptions.length === 0) return <Preloader />;
 
   return (
     <div className='container'>
-      <PetSelector selections={selections} deselect={deselect} />
+      <PetSelector
+        selections={selections}
+        deselect={deselect}
+        toggleSearch={() => {
+          setShowSearch(!showSearch);
+          setPets(petOptions);
+        }}
+      />
       <CardContainer>
+        {showSearch && <SearchBar search={search} />}
         {pets.map((pet, index) => (
           <PetCard key={index} pet={pet} select={select} />
         ))}

@@ -13,7 +13,7 @@ export const Card = styled.div`
   height: calc(10rem + 10vh);
   display: inline-block;
   perspective: 2000px;
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 2rem;
   cursor: pointer;
 `;
@@ -29,7 +29,7 @@ export const CardInner = styled.div`
   position: relative;
   top: -100%;
   height: 100%;
-  text-align: center;
+  /* text-align: center; */
   transition: transform 1s;
   transform-style: preserve-3d;
 
