@@ -28,6 +28,23 @@ const Pets = () => {
     setSelections([]);
   };
 
+  const shuffle = () => {
+    let shuffledPets = pets;
+    let currIdx = shuffledPets.length,
+      randIdx;
+    while (currIdx !== 0) {
+      randIdx = Math.floor(Math.random() * currIdx);
+      currIdx--;
+
+      [shuffledPets[currIdx], shuffledPets[randIdx]] = [
+        shuffledPets[randIdx],
+        shuffledPets[currIdx],
+      ];
+    }
+
+    setPets([...shuffledPets]);
+  };
+
   const select = (pet) => {
     if (
       !selections.find((selection) => {
@@ -72,7 +89,11 @@ const Pets = () => {
         {pets.map((pet, index) => (
           <PetCard key={index} pet={pet} select={select} />
         ))}
-        <ActionBtn selectAll={selectAll} clearAll={clearAll} />
+        <ActionBtn
+          selectAll={selectAll}
+          clearAll={clearAll}
+          shuffle={shuffle}
+        />
       </CardContainer>
     </div>
   );

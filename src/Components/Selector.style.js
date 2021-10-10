@@ -57,6 +57,16 @@ export const SelectionActionBtns = styled.div`
   }
 `;
 
+export const SearchBarContainer = styled.div`
+  margin-bottom: -3rem;
+  width: 100%;
+  padding-left: calc(75% - 10rem);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+`;
+
 const extend = keyframes`
   from {
     transform: scaleY(0);
@@ -70,22 +80,16 @@ const extend = keyframes`
 `;
 export const SearchBarInput = styled.input`
   outline: none;
-  position: -webkit-sticky;
-  position: sticky;
-  text-align: right;
-  top: 0;
-  left: 24%;
-  padding: 1rem;
-  width: 75%;
-  height: 3rem;
-  border-radius: 1rem;
   border: transparent;
-  z-index: 1;
+  text-align: right;
+  padding: 1rem;
+  height: 3rem;
+  width: 100%;
+  border-radius: 1rem;
   background-color: rgba(73, 73, 73, 0.6);
   color: #eee;
   font-size: 1.6rem;
   letter-spacing: 3px;
-  margin-bottom: -3rem;
 
   animation: ${extend} 0.2s ease-in-out;
 `;

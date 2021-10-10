@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const ActionBtn = ({ selectAll, clearAll }) => {
+const ActionBtn = ({ selectAll, clearAll, shuffle }) => {
   useEffect(() => {
     var fabs = document.querySelectorAll('.fixed-action-btn');
     M.FloatingActionButton.init(fabs, { direction: 'top' });
@@ -41,6 +41,18 @@ const ActionBtn = ({ selectAll, clearAll }) => {
           >
             <i className='material-icons' onClick={selectAll}>
               done_all
+            </i>
+          </a>
+        </li>
+        <li>
+          <a
+            href='#!'
+            className='btn-floating grey darken-1 tooltipped'
+            data-tooltip='Shuffle'
+            data-position='left'
+          >
+            <i className='material-icons' onClick={shuffle}>
+              cached
             </i>
           </a>
         </li>
