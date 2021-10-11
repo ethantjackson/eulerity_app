@@ -48,7 +48,8 @@ const About = () => {
             </AboutArea>
           </AboutAreaContainer>
           <AboutAreaContainer>
-            <AboutArea color='#fbc02d'>
+            {/* <AboutArea color='#fbc02d'> */}
+            <AboutArea color='#1976d2'>
               <h4>
                 <i className='material-icons'>file_download</i>
                 Download Pix
@@ -62,7 +63,7 @@ const About = () => {
         </div>
         <div className='col s12'>
           <AboutAreaContainer>
-            <AboutArea color='#1976d2'>
+            <AboutArea color='#9e9e9e'>
               <h4>
                 <i className='material-icons'>person</i>About Me
               </h4>
