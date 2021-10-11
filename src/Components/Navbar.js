@@ -1,13 +1,18 @@
 import React from 'react';
 import { NavbarContainer, Logo, Links, LinkItem } from './Navbar.style';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <NavbarContainer>
       <Logo>PetPix</Logo>
       <Links>
-        <LinkItem>About Me</LinkItem>
-        <LinkItem>Contact Me</LinkItem>
+        <LinkItem>
+          <Link to='/about'>About</Link>
+        </LinkItem>
+        <LinkItem>
+          <Link to='/'>Home</Link>
+        </LinkItem>
       </Links>
     </NavbarContainer>
   );

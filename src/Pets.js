@@ -7,7 +7,6 @@ import ActionBtn from './Components/ActionBtn';
 import SearchBar from './Components/SearchBar';
 import { CardContainer } from './Components/Card.style';
 import axios from 'axios';
-import 'materialize-css/dist/css/materialize.min.css';
 
 const Pets = () => {
   const petOptions = useSelector((state) => state.petOptions);

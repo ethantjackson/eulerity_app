@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SearchBarInput, SearchBarContainer } from './Selector.style';
-import 'materialize-css/dist/css/materialize.min.css';
 
 const SearchBar = () => {
   const petOptions = useSelector((state) => state.petOptions);

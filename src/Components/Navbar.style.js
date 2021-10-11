@@ -30,4 +30,8 @@ export const LinkItem = styled.li`
     color: black;
     transform: scale(1.2);
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
