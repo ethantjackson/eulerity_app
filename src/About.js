@@ -52,7 +52,7 @@ const About = () => {
             <AboutArea color='#1976d2'>
               <h4>
                 <i className='material-icons'>file_download</i>
-                Download Pix
+                Get Pix
               </h4>
               <p>
                 Once you find the pets you like, it is easy to download your
