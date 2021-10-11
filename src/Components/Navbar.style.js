@@ -11,6 +11,11 @@ export const Logo = styled.h1`
   margin-top: 3vh;
   float: left;
   font-size: 4vh;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export const Links = styled.ul`
